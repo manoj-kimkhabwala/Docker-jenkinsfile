@@ -24,6 +24,12 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage('Build Image'){
+            steps{
+                sh 'docker build -t myaddressbook .'
+            }
+
+        }
     }
 
 }
