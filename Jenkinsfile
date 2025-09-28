@@ -30,6 +30,20 @@ pipeline{
             }
 
         }
+        stage('push image to dockerhub'){
+            steps{
+               withCredentials([string(credentialsId: 'DOCKER_HUB_PASWD', variable: 'DOCKER_HUB_PASSWD')]) {
+                 sh 'docker login -u sonal04 -p ${DOCKER_HUB_PASSWD}'
+}               
+                sh 'docker tag myaddressbook sonal04/myaddressbook'
+                sh 'docker push sonal04/myaddressbook'
+            }
+        }
+        stage('Deploy the container'){
+            steps{
+                sh 'docker run -d -P sonal04/myaddressbook'
+            }
+        }
     }
 
 }
