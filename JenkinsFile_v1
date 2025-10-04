@@ -1,0 +1,29 @@
+pipeline{
+    agent any // the current machine where we have to run the pipeline 
+    tools{
+        maven 'mymaven'
+    }
+    stages{
+        stage('Checkout Code'){
+            steps{
+                git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+            }
+        }
+        stage('Compile Code'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('Test code'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('package code'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+    }
+
+}
