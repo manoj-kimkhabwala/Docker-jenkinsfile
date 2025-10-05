@@ -37,7 +37,7 @@ pipeline{
                 {
                      sh 'docker login -u manojkimkhabwala -p ${DOCKER_HUB_PWD}'
                 }                                 
-                sh 'docker tag myaddressbook somanojkimmanojkimkhabwalakhabwalanal04/myaddressbook'
+                sh 'docker tag myaddressbook manojkimkhabwala/myaddressbook'
                 sh 'docker push manojkimkhabwala/myaddressbook'
             }       
         }
