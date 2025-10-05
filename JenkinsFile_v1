@@ -31,6 +31,17 @@ pipeline{
             }
         }
 
+         stage('push image to dockerhub'){
+            steps{
+                withCredentials([string(credentialsId: 'DOCKER_HUB_PWD', variable: 'DOCKER_HUB_PWD')])
+                {
+                     sh 'docker login -u manojkimkhabwala -p ${DOCKER_HUB_PWD}'
+                               
+                    sh 'docker tag myaddressbook somanojkimmanojkimkhabwalakhabwalanal04/myaddressbook'
+                    sh 'docker push manojkimkhabwala/myaddressbook'
+                }     
+            }       
+        }
     }
 
 }
